@@ -3,7 +3,8 @@ function createHobbit(hobbitName, hobbitAge){
     name: hobbitName,
     age: hobbitAge,
     isAdult: false,
-    isOld: false
+    isOld: false,
+    acquaintances: []
   }
   if (hobbitAge === undefined){
     hobbit.age = 0
@@ -16,19 +17,31 @@ function createHobbit(hobbitName, hobbitAge){
 
 function celebrateBirthday(hobbit) {
   hobbit.age += 1;
-  if (hobbit.age > 32) {
-    hobbit.isAdult = true;
-  }
-  else if (hobbit.age > 100){
-    hobbit.isOld = true
-  }
+    if (hobbit.age > 100) {
+      hobbit.isAdult = false;
+      hobbit.isOld = true
+    }
+    else if (hobbit.age > 32){
+      hobbit.isOld = false;
+      hobbit.isAdult = true
+    } 
   return hobbit;
 }
+
+
+function getRing(hobbit){
+  if (hobbit.name === "Frodo"){
+    return "Here is the ring!"
+  } else {
+    return "You can't have it!"
+  }
+}
+
 
 module.exports = {
   createHobbit, 
   celebrateBirthday, 
-  // getRing, 
-  // meetPeople, 
+  getRing, 
+  meetPeople, 
   // findFriends
 }
